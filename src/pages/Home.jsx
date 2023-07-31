@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom"
+import Sidebar from "../components/Sidebar"
+import Chat from "../components/Chat"
 
 const Home = () => {
 
   return (
-    <>
-    <Link to="/login" className="flex justify-center items-center h-screen">Login</Link>
-    </>
+    <div className="h-screen bg-slate-400 flex items-center justify-center">
+        <div className="border w-2/3 h-4/5 flex rounded-lg overflow-hidden">
+          <Sidebar />
+          <Chat />
+        </div>
+    </div>
   )
 }
 

@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // import 'firebase/firestore'
 
 import Home from './pages/Home'
+import Message from './components/Message'
+
 import Login from './auth/Login'
 import Signup from './auth/Signup'
 
@@ -21,6 +23,8 @@ const App = () => {
       <Route path="/signup" element={<Signup />} />
 
       <Route path="/" element={<Home />} />
+      <Route path="/message" element={<Message />} />
+      
     </Routes>
     </BrowserRouter>
   )

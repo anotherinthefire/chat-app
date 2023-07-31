@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sidebar{flex: 1}
+
+.chat{flex:2}
