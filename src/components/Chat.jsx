@@ -7,9 +7,9 @@ import Input from "./Input"
 const Chat = () => {
   return (
     <div className="chat">
-      <div className="chatInfo h-12 bg-slate-700 flex items-center justify-between text-gray-300 p-2">
+      <div className="h-12 bg-slate-700 flex items-center justify-between text-gray-300 p-2">
         <span>Dreyn</span>
-        <div className="chatIcon flex gap-2">
+        <div className="flex gap-2">
           <img src={Cam} alt="" className="h-6 w-6"/>
           <img src={Add} alt="" className="h-6 w-6"/>
           <img src={More} alt="" className="h-6 w-6"/>

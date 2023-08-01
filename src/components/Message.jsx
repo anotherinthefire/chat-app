@@ -15,14 +15,15 @@ const Message = () => {
         </div>
 
         <div className="flex gap-5 flex-row-reverse">
-            <div className="messageinfo flex flex-col text-gray-500 font-light mb-5">
+            <div className="flex flex-col text-gray-500 font-light mb-5">
                 <img src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/363424501_675186351316112_4049125895322136204_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=AGjIbS5TlrMAX_eobLp&_nc_ht=scontent.fmnl4-6.fna&oh=00_AfBD6muQ7rkUdR077YNhsgYwytmVicvLra0fUvmHOuSl2Q&oe=64CBD1A5"
                 className="h-10 w-10 rounded-full object-cover"/>
                 <span>just now</span>
             </div>
-            <div className="messagecontent w-2/3 flex flex-col gap-2 mb-5 items-end">
+            <div className="w-2/3 flex flex-col gap-2 mb-5 items-end">
                 <p className="bg-slate-500 text-white p-2 rounded-tl-lg rounded-bl-lg rounded-br-lg max-w-max">hi</p>
-                <img src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/363424501_675186351316112_4049125895322136204_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=AGjIbS5TlrMAX_eobLp&_nc_ht=scontent.fmnl4-6.fna&oh=00_AfBD6muQ7rkUdR077YNhsgYwytmVicvLra0fUvmHOuSl2Q&oe=64CBD1A5"/>
+                <img src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/363424501_675186351316112_4049125895322136204_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=AGjIbS5TlrMAX_eobLp&_nc_ht=scontent.fmnl4-6.fna&oh=00_AfBD6muQ7rkUdR077YNhsgYwytmVicvLra0fUvmHOuSl2Q&oe=64CBD1A5"
+                className="rounded-lg"/>
             </div>
         </div>
         </div>
