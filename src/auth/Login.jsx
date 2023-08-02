@@ -1,7 +1,23 @@
 import logo from "../assets/react.svg"
 import { Link } from "react-router-dom"
-
+import { useState, useNavigate } from "react"
 const Login = () => {
+
+    const [err, setErr] = useState(false)
+    const navigate = useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const email = e.target[0].value
+        const password = e.target[1].value
+
+        try {
+            
+        } catch (err) {
+            setErr(true)
+        }
+    }
+
   return (
     <div>
         <main className="w-full h-screen flex flex-col items-center justify-center px-4">
@@ -13,7 +29,7 @@ const Login = () => {
                     </div>
                 </div>
                 <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
                     className="space-y-5"
                 >
                     <div>

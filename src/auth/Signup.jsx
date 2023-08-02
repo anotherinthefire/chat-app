@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage } from "../firebase"
+import { auth, storage, db } from "../firebase"
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
-    const [err, serErr] = useState(false)
+    const [err, setErr] = useState(false)
+    const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const displayName = e.target[0].value
@@ -22,8 +25,6 @@ const Signup = () => {
 
             uploadTask.on('state_changed',
                 (snapshot) => {
-                    // Observe state change events such as progress, pause, and resume
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     switch (snapshot.state) {
@@ -36,28 +37,33 @@ const Signup = () => {
                     }
                 },
                 (error) => {
-                    // Handle unsuccessful uploads
                     setErr(true)
                 },
                 () => {
-                    // Handle successful uploads on complete
-                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                    getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
-                        await updateProfile(res.user,{
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                        await updateProfile(res.user, {
                             displayName,
-                            photoURL:downloadURL
+                            photoURL: downloadURL
 
                         })
+                        await setDoc(doc(db, "user", res.user.uid), {
+                            uid: res.user.uid,
+                            displayName,
+                            email,
+                            photoURL: downloadURL
+                        })
+
+                        await setDoc(doc(db, "userChats", res.user.uid), {})
+                        navigate("/")
+
+
                     });
                 }
             );
         } catch (err) {
-            serErr(true)
+            setErr(true)
         }
     }
-
-
-
 
     return (
         <div>

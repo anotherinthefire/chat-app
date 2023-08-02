@@ -1,28 +1,42 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-// import firebase from 'firebase/app'
-// import 'firebase/auth'
-// import 'firebase/firestore'
-
-import Home from './pages/Home'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from './auth/Login'
 import Signup from './auth/Signup'
 
-// firebase.initializeApp({
-
-// })
+import Home from './pages/Home'
+import { AuthContext } from './context/AuthContext'
+import { useContext } from 'react'
 
 const App = () => {
+
+  const { currentUser } = useContext(AuthContext)
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return (
+        <Navigate to="/login" />
+      )
+    }
+  }
   return (
     <BrowserRouter>
-    <Routes>
-      {/* create condition if no user found then redirect to login */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+ 
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
 
-      <Route path="/" element={<Home />} />
-    </Routes>
+        <Route index element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        } />
+      </Routes>
     </BrowserRouter>
   )
 }
