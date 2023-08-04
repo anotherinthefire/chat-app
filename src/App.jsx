@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from './auth/Login'
@@ -13,7 +14,7 @@ const App = () => {
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      return  <Navigate to="/login" />
+      return <Navigate to="/login" />
     }
 
     return children
@@ -36,6 +37,7 @@ const App = () => {
             <Home />
           </ProtectedRoute>
         } />
+
       </Routes>
     </BrowserRouter>
   )
